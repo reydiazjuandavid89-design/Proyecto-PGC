@@ -1,9 +1,8 @@
-
-package proyectopgc;
+package BackEnd;
 
 
 public class Encargado {
-    
+
     int id;
     String nombre;
     String rol;
@@ -12,6 +11,7 @@ public class Encargado {
     
     
     public void crearObra(){
+        
     }
     public void asignarObreros(){
     } 

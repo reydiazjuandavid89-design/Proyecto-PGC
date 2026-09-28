@@ -136,6 +136,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="password1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="password1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

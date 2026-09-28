@@ -1,14 +1,15 @@
-
-package proyectopgc;
-
+package FrontEnd;
+import Main.ProyectoPGC;
 
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
+    int id;
+    String rol;
+    char[]contraseña;
     
-    /**
-     * Creates new form FrontEnd
-     */
+    
+    
     public Login() {
         initComponents();
     }
@@ -49,6 +50,8 @@ public class Login extends javax.swing.JFrame {
         cb1.addActionListener(this::cb1ActionPerformed);
 
         lblRol.setText("Rol:");
+
+        password1.addActionListener(this::password1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,35 +106,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuaActionPerformed
-              // TODO add your handling code here:
+                    // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuaActionPerformed
 
     private void cb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb1ActionPerformed
-        
-        String rol= lblRol.getText();        // TODO add your handling code here:
+        rol=cb1.getSelectedItem().toString();
+               // TODO add your handling code here:
     }//GEN-LAST:event_cb1ActionPerformed
 
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
-          int contraseña=Integer.parseInt(password1.getText());  
-          String rol=cb1.getSelectedItem().toString();// TODO add your handling code here:
-          int usuario=Integer.parseInt(txtUsua.getText());
-          if(rol== "Maestro" ){       
-             
-              MenuMaestro menuM= new MenuMaestro();
-              menuM.setVisible(true);
-              this.dispose();    // TODO add your handling code here:
+        rol=cb1.getSelectedItem().toString();
+         contraseña=password1.getPassword(); 
+        id=Integer.parseInt(txtUsua.getText()); 
+        ProyectoPGC main= new ProyectoPGC();
+        main.login(rol, id, contraseña);
+        dispose();
+         
     }//GEN-LAST:event_boton1ActionPerformed
-          else{
-              MenuCapataz menuC= new MenuCapataz();
-              menuC.setVisible(true);
-              this.dispose();
-          }
-    }
-              
+
+    private void password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password1ActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_password1ActionPerformed
       
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,8 +145,6 @@ public class Login extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     }
 
